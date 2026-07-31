@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const SITE_NAME = "Springfield Christian Academy";
@@ -54,6 +55,7 @@ export default function RootLayout({
           data-accent-color="#fdc10e"
           strategy="afterInteractive"
         />
+        <Analytics />
       </body>
     </html>
   );

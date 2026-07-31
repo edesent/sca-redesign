@@ -5,15 +5,15 @@ import {
   ArrowLeft,
   ArrowRight,
   CalendarDays,
-  ChevronRight,
   Mail,
   MapPin,
   Phone,
   ShieldCheck,
 } from "lucide-react";
 
+import SiteHeader from "../../components/SiteHeader";
+import { GROUPS, STAFF, type StaffMember } from "../../lib/staff";
 import campus from "../../../public/sca-redesign/campus-hero-enhanced.jpg";
-import headerLogo from "../../../public/sca-redesign/logo-header.png";
 import logo from "../../../public/sca-redesign/logo.png";
 
 const openSans = Open_Sans({
@@ -43,136 +43,6 @@ export const metadata = {
   robots: { index: false, follow: false },
 };
 
-const STAFF = [
-  {
-    name: "Mr. Patrick Wagner",
-    role: "Principal | HS Educator",
-    group: "Leadership",
-    image: "https://faithconnector.s3.amazonaws.com/1562/images/member/0155.jpg",
-  },
-  {
-    name: "Mr. Jim Adams",
-    role: "Vice Principal | Athletic Director | HS Educator",
-    group: "Leadership",
-    image: "https://faithconnector.s3.amazonaws.com/1562/images/member/0002.jpg",
-  },
-  {
-    name: "Mrs. Anna Fleck",
-    role: "SCA Administrative Assistant",
-    group: "Office",
-    image: "https://faithconnector.s3.amazonaws.com/1562/images/member/img_0381.jpg",
-  },
-  {
-    name: "Mrs. Kim Clark",
-    role: "School Secretary",
-    group: "Office",
-    image: "https://faithconnector.s3.amazonaws.com/1562/images/member/0026.jpg",
-  },
-  {
-    name: "Miss Heather Vanaman",
-    role: "Director: The Children's Ark",
-    group: "Early Childhood",
-    image: "https://faithconnector.s3.amazonaws.com/1562/images/member/heather_vanaman.jpg",
-  },
-  {
-    name: "Miss Jennifer McKenna",
-    role: "Ark: Assistant Director",
-    group: "Early Childhood",
-    image: "https://faithconnector.s3.amazonaws.com/1562/images/member/jennifer_mckenna.jpg",
-  },
-  {
-    name: "Mrs. Carol Rinehart",
-    role: "1st Grade Teacher",
-    group: "Elementary",
-    image: "https://faithconnector.s3.amazonaws.com/1562/images/member/0130.jpg",
-  },
-  {
-    name: "Mrs. LouAnn Holzer",
-    role: "2nd Grade Teacher",
-    group: "Elementary",
-    image: "https://faithconnector.s3.amazonaws.com/1562/images/member/0082.jpg",
-  },
-  {
-    name: "Mrs. Rebecca Rowan",
-    role: "2nd Grade Teacher",
-    group: "Elementary",
-    image: "https://faithconnector.s3.amazonaws.com/1562/images/member/0135.jpg",
-  },
-  {
-    name: "Mrs. Nancy Grant",
-    role: "3rd Grade Teacher",
-    group: "Elementary",
-    image: "https://faithconnector.s3.amazonaws.com/1562/images/member/0057.jpg",
-  },
-  {
-    name: "Mrs. Tina McClaran",
-    role: "4th Grade Teacher",
-    group: "Elementary",
-    image: "https://faithconnector.s3.amazonaws.com/1562/images/member/0110.jpg",
-  },
-  {
-    name: "Miss. Abigail Molina",
-    role: "5th Grade Teacher",
-    group: "Elementary",
-    image: "https://faithconnector.s3.amazonaws.com/1562/images/member/molina_abigail.jpg",
-  },
-  {
-    name: "Mrs. Rory Adams",
-    role: "6th Grade Teacher",
-    group: "Elementary",
-    image: "https://faithconnector.s3.amazonaws.com/1562/images/member/0004.jpg",
-  },
-  {
-    name: "Mrs. Angela Fleck",
-    role: "Elementary Music",
-    group: "Fine Arts",
-    image: "https://faithconnector.s3.amazonaws.com/1562/images/member/0046.jpg",
-  },
-  {
-    name: "Mrs. Annie Allen",
-    role: "Elementary Physical Education",
-    group: "Student Life",
-    image: "https://faithconnector.s3.amazonaws.com/1562/images/member/allen_annie.jpg",
-  },
-  {
-    name: "Mrs. Julie Jackman",
-    role: "JH History Educator",
-    group: "Junior High",
-    image: "https://faithconnector.s3.amazonaws.com/1562/images/member/0087.jpg",
-  },
-  {
-    name: "Mrs. Rebecca Harless",
-    role: "JH Mathematics | JH & SH Art | JH & SH Physical Education",
-    group: "Junior/Senior High",
-    image: "https://faithconnector.s3.amazonaws.com/1562/images/member/0072.jpg",
-  },
-  {
-    name: "Mr. Jason McClaran",
-    role: "CAD Fusion Educator | Robotics",
-    group: "Robotics",
-    image: "https://faithconnector.s3.amazonaws.com/1562/images/member/0109.jpg",
-  },
-  {
-    name: "Mr. Kevin Moore",
-    role: "JH/SH Educator",
-    group: "Junior/Senior High",
-    image: "https://faithconnector.s3.amazonaws.com/1562/images/member/0119.jpg",
-  },
-  {
-    name: "Mrs. Laurie Moore",
-    role: "JH/SH Science Educator",
-    group: "Junior/Senior High",
-    image: "https://faithconnector.s3.amazonaws.com/1562/images/member/0118.jpg",
-  },
-  {
-    name: "Mrs. Dyanna Papsdorf",
-    role: "JH & SH English | Speech Educator | Yearbook Advisor",
-    group: "Junior/Senior High",
-  },
-];
-
-const GROUPS = Array.from(new Set(STAFF.map((person) => person.group)));
-
 export default function ScaStaffPage() {
   const leadership = STAFF.filter((person) => person.group === "Leadership");
   const staff = STAFF.filter((person) => person.group !== "Leadership");
@@ -181,7 +51,7 @@ export default function ScaStaffPage() {
     <main
       className={`${openSans.variable} ${graduate.variable} ${caveat.variable} min-h-screen bg-[#f7f8fa] text-[#27183b] antialiased`}
     >
-      <Header />
+      <SiteHeader cta={{ href: "https://www.scaeagles.org/staff", label: "Original" }} />
       <section className="relative overflow-hidden bg-[#27183b] px-4 pb-16 pt-32 text-white sm:px-6 lg:px-8">
         <Image
           src={campus}
@@ -276,41 +146,7 @@ export default function ScaStaffPage() {
   );
 }
 
-function Header() {
-  return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/15 bg-[#27183b]/92 backdrop-blur-md">
-      <div className="mx-auto flex h-24 max-w-7xl items-center justify-between gap-5 px-4 sm:h-28 sm:px-6 lg:px-8">
-        <Link href="/" className="flex min-w-0 flex-1 items-center gap-3 sm:gap-4 lg:min-w-[390px] lg:flex-none">
-          <span className="relative grid h-20 w-24 shrink-0 place-items-center p-0 drop-shadow-[0_16px_24px_rgba(0,0,0,0.34)] sm:h-24 sm:w-28">
-            <Image src={headerLogo} alt="Springfield Christian Academy Eagles logo" className="h-auto w-full" priority />
-          </span>
-        </Link>
-
-        <nav className="hidden items-center gap-5 lg:flex" aria-label="Staff page navigation">
-          <Link href="/" className="whitespace-nowrap text-[13px] font-extrabold uppercase tracking-[0.14em] text-white/78 transition hover:text-[#fdc10e]">
-            Home
-          </Link>
-          <Link href="/calendar" className="whitespace-nowrap text-[13px] font-extrabold uppercase tracking-[0.14em] text-white/78 transition hover:text-[#fdc10e]">
-            Calendar
-          </Link>
-          <Link href="/staff" className="whitespace-nowrap text-[13px] font-extrabold uppercase tracking-[0.14em] text-[#fdc10e]">
-            Staff
-          </Link>
-        </nav>
-
-        <a
-          href="https://www.scaeagles.org/staff"
-          className="inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-sm bg-[#fdc10e] px-4 text-sm font-black uppercase tracking-[0.08em] text-[#27183b] shadow-[0_10px_25px_rgba(0,0,0,0.22)] transition hover:bg-white"
-        >
-          <span className="hidden min-[430px]:inline">Original</span>
-          <ChevronRight className="size-4" aria-hidden />
-        </a>
-      </div>
-    </header>
-  );
-}
-
-function StaffCard({ person, featured = false }: { person: (typeof STAFF)[number]; featured?: boolean }) {
+function StaffCard({ person, featured = false }: { person: StaffMember; featured?: boolean }) {
   return (
     <article
       className={`group overflow-hidden rounded-sm border border-[#d8dde6] bg-white shadow-sm transition hover:-translate-y-1 hover:border-[#d6a102] hover:shadow-[0_18px_42px_rgba(39,24,59,0.14)] ${

@@ -4,7 +4,6 @@ import { Caveat, Graduate, Open_Sans } from "next/font/google";
 import {
   ArrowLeft,
   CalendarDays,
-  ChevronRight,
   Clock,
   ExternalLink,
   MapPin,
@@ -12,7 +11,7 @@ import {
 } from "lucide-react";
 
 import logo from "../../../public/sca-redesign/logo.png";
-import headerLogo from "../../../public/sca-redesign/logo-header.png";
+import SiteHeader from "../../components/SiteHeader";
 
 const openSans = Open_Sans({
   subsets: ["latin"],
@@ -86,7 +85,7 @@ export default async function ScaCalendarPage() {
     <main
       className={`${openSans.variable} ${graduate.variable} ${caveat.variable} min-h-screen bg-[#f7f8fa] text-[#27183b] antialiased`}
     >
-      <Header />
+      <SiteHeader cta={{ href: "https://www.scaeagles.org/calendar", label: "Original" }} />
       <section className="relative overflow-hidden bg-[#27183b] px-4 pb-16 pt-32 text-white sm:px-6 lg:px-8">
         <div className="absolute inset-0 opacity-[0.13] [background-image:linear-gradient(rgba(253,193,14,0.55)_1px,transparent_1px),linear-gradient(90deg,rgba(253,193,14,0.55)_1px,transparent_1px)] [background-size:42px_42px]" />
         <div className="relative mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1fr_420px]">
@@ -215,28 +214,6 @@ export default async function ScaCalendarPage() {
         </div>
       </section>
     </main>
-  );
-}
-
-function Header() {
-  return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/15 bg-[#27183b]/92 backdrop-blur-md">
-      <div className="mx-auto flex h-24 max-w-7xl items-center justify-between gap-5 px-4 sm:h-28 sm:px-6 lg:px-8">
-        <Link href="/" className="flex min-w-0 flex-1 items-center gap-3 sm:gap-4 lg:min-w-[390px] lg:flex-none">
-          <span className="relative grid h-20 w-24 shrink-0 place-items-center p-0 drop-shadow-[0_16px_24px_rgba(0,0,0,0.34)] sm:h-24 sm:w-28">
-            <Image src={headerLogo} alt="Springfield Christian Academy Eagles logo" className="h-auto w-full" priority />
-          </span>
-        </Link>
-
-        <a
-          href="https://www.scaeagles.org/calendar"
-          className="inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-sm bg-[#fdc10e] px-4 text-sm font-black uppercase tracking-[0.08em] text-[#27183b] shadow-[0_10px_25px_rgba(0,0,0,0.22)] transition hover:bg-white"
-        >
-          <span className="hidden min-[430px]:inline">Original</span>
-          <ChevronRight className="size-4" aria-hidden />
-        </a>
-      </div>
-    </header>
   );
 }
 

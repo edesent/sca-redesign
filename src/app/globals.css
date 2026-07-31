@@ -13,3 +13,39 @@ body {
 * {
   box-sizing: border-box;
 }
+
+/* Staff photo carousel on the homepage — see src/components/StaffMarquee.tsx.
+   The track holds the roster twice, so -50% lands the second copy exactly
+   where the first started. Slow it down or speed it up with `--sca-pan`. */
+.sca-marquee {
+  --sca-pan: 70s;
+}
+
+.sca-marquee-track {
+  animation: sca-pan var(--sca-pan) linear infinite;
+}
+
+.sca-marquee:hover .sca-marquee-track,
+.sca-marquee:focus-within .sca-marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes sca-pan {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Don't pan for anyone who has asked for less motion — let them scroll it. */
+@media (prefers-reduced-motion: reduce) {
+  .sca-marquee {
+    overflow-x: auto;
+  }
+
+  .sca-marquee-track {
+    animation: none;
+  }
+}

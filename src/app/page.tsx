@@ -6,7 +6,6 @@ import {
   BookOpen,
   CalendarDays,
   Check,
-  ChevronRight,
   GraduationCap,
   MapPin,
   Phone,
@@ -16,8 +15,9 @@ import {
   UsersRound,
 } from "lucide-react";
 
+import SiteHeader from "../components/SiteHeader";
+import StaffMarquee from "../components/StaffMarquee";
 import logo from "../../public/sca-redesign/logo.png";
-import headerLogo from "../../public/sca-redesign/logo-header.png";
 import campus from "../../public/sca-redesign/campus-hero-enhanced.jpg";
 import lockers from "../../public/sca-redesign/excellence-bg.jpg";
 import elementary from "../../public/sca-redesign/elementary.png";
@@ -51,15 +51,6 @@ export const metadata = {
     "A modern website concept for Springfield Christian Academy in Clarkston, Michigan, preserving the SCA Eagles purple, gold, and school identity.",
   robots: { index: false, follow: false },
 };
-
-const NAV = [
-  { href: "#academics", label: "Academics" },
-  { href: "/calendar", label: "Calendar" },
-  { href: "#life", label: "Student Life" },
-  { href: "#admissions", label: "Admissions" },
-  { href: "/staff", label: "Staff" },
-  { href: "#contact", label: "Contact" },
-];
 
 const QUICK_LINKS = [
   {
@@ -131,15 +122,6 @@ const LIFE = [
   "FRC Springfield Robotics Team",
 ];
 
-const STAFF = [
-  ["Mr. Patrick Wagner", "Principal | HS Educator"],
-  ["Mr. Jim Adams", "Vice Principal | Athletic Director | HS Educator"],
-  ["Mrs. Anna Fleck", "SCA Administrative Assistant"],
-  ["Mrs. Kim Clark", "School Secretary"],
-  ["Miss Heather Vanaman", "Director: The Children's Ark"],
-  ["Mr. Jason McClaran", "CAD Fusion Educator | Robotics"],
-];
-
 const EVENTS = [
   ["Aug 24-28", "Staff In-Service"],
   ["Aug 31", "First Day of School"],
@@ -152,7 +134,7 @@ export default function ScaRedesignPage() {
     <main
       className={`${openSans.variable} ${graduate.variable} ${caveat.variable} min-h-screen bg-[#f7f8fa] text-[#27183b] antialiased`}
     >
-      <Header />
+      <SiteHeader />
       <Hero />
       <QuickLinks />
       <Academics />
@@ -162,41 +144,6 @@ export default function ScaRedesignPage() {
       <Staff />
       <Contact />
     </main>
-  );
-}
-
-function Header() {
-  return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/15 bg-[#27183b]/92 backdrop-blur-md">
-      <div className="mx-auto flex h-24 max-w-7xl items-center justify-between gap-5 px-4 sm:h-28 sm:px-6 lg:px-8">
-        <Link href="/" className="flex min-w-0 flex-1 items-center gap-3 sm:gap-4 lg:min-w-[390px] lg:flex-none">
-          <span className="relative grid h-20 w-24 shrink-0 place-items-center p-0 drop-shadow-[0_16px_24px_rgba(0,0,0,0.34)] sm:h-24 sm:w-28">
-            <Image src={headerLogo} alt="Springfield Christian Academy Eagles logo" className="h-auto w-full" priority />
-          </span>
-        </Link>
-
-        <nav className="hidden items-center gap-5 xl:gap-6 lg:flex" aria-label="Primary navigation">
-          {NAV.map((item) => (
-            <a
-              href={item.href}
-              key={item.href}
-              className="whitespace-nowrap text-[13px] font-extrabold uppercase tracking-[0.14em] text-white/78 transition hover:text-[#fdc10e]"
-            >
-              {item.label}
-            </a>
-          ))}
-        </nav>
-
-        <a
-          href="#admissions"
-          aria-label="Plan a visit"
-          className="inline-flex h-11 w-12 shrink-0 items-center justify-center gap-1.5 rounded-sm bg-[#fdc10e] px-0 text-sm font-black uppercase tracking-[0.08em] text-[#27183b] shadow-[0_10px_25px_rgba(0,0,0,0.22)] transition hover:bg-white min-[440px]:w-auto min-[440px]:px-3 sm:gap-2 sm:px-4"
-        >
-          <span className="hidden min-[440px]:inline">Visit</span>
-          <ChevronRight className="size-4" aria-hidden />
-        </a>
-      </div>
-    </header>
   );
 }
 
@@ -462,27 +409,19 @@ function Staff() {
           title="Experienced people, easier to meet."
           text="The current staff page has strong information. The full redesign turns it into a polished, photo-forward directory with roles parents can understand quickly."
         />
-        <div className="mt-12 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
-          {STAFF.map(([name, role]) => (
-            <article key={name} className="rounded-sm border border-[#d8dde6] bg-white p-5">
-              <div className="flex items-center gap-4">
-                <div className="grid size-12 shrink-0 place-items-center rounded-sm bg-[#27183b] text-sm font-black text-[#fdc10e]">
-                  {name.split(" ").slice(-1)[0].slice(0, 2).toUpperCase()}
-                </div>
-                <div>
-                  <h3 className="font-extrabold text-[#27183b]">{name}</h3>
-                  <p className="mt-1 text-sm leading-5 text-[#6b6965]">{role}</p>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-        <div className="mt-8">
+      </div>
+
+      <div className="mx-auto mt-12 max-w-7xl">
+        <StaffMarquee />
+      </div>
+
+      <div className="mx-auto max-w-7xl">
+        <div className="mt-10">
           <Link
             href="/staff"
             className="inline-flex h-12 items-center gap-2 rounded-sm bg-[#27183b] px-5 text-sm font-black uppercase tracking-[0.1em] text-[#fdc10e] transition hover:bg-[#fdc10e] hover:text-[#27183b]"
           >
-            View Staff Photos
+            Meet the Whole Team
             <ArrowRight className="size-4" aria-hidden />
           </Link>
         </div>

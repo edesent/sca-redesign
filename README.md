@@ -29,9 +29,23 @@ helping with a change, read this first.**
 | `/calendar` | School-year calendar and events |
 | `/staff` | Full faculty & staff directory, grouped by department |
 
-Each page is a single self-contained file. There is no shared `src/components/` directory and no
-shared Navbar/Footer component — **each page carries its own `Header()` and footer function at the
-bottom of its file.** If you change the nav or footer, change it in all three files.
+Each page is otherwise a single self-contained file — its own sections and footer live at the
+bottom of that file. Only the header and the staff carousel are shared:
+
+| File | What it is |
+|---|---|
+| `src/components/SiteHeader.tsx` | The header on all three pages — desktop nav **and the mobile hamburger menu**. `NAV` lives here, so changing the nav changes it everywhere. |
+| `src/components/StaffMarquee.tsx` | The panning row of staff photos on the homepage. |
+| `src/lib/staff.ts` | The faculty & staff roster, shared by `/staff` and the homepage carousel. |
+
+The header's gold button differs per page — pass a `cta` prop:
+
+```tsx
+<SiteHeader cta={{ href: "https://www.scaeagles.org/staff", label: "Original" }} />
+```
+
+Section links in `NAV` are written `/#academics` (not `#academics`) so they also work from the
+subpages.
 
 ---
 
@@ -42,20 +56,28 @@ array, not the JSX.
 
 **`src/app/page.tsx`**
 
-- `NAV` — the header nav links
 - `QUICK_LINKS` — the three cards under the hero (Parent Portal / Inquire / Apply)
 - `DISTINCTIVES` — the "what makes SCA SCA" bullet list
 - `ACADEMICS` — the four program cards (Elementary, Middle School, High School, Chapel), each with
   its image and bullet points
 - `STATS` — the four numbers in the hero card (founded, acreage, ages served, tuition support)
 - `LIFE` — the student-life activity list
-- `STAFF` — the short staff preview on the homepage (the full list is on `/staff`)
 - `EVENTS` — the few dates shown on the homepage (the full list is on `/calendar`)
 
-**`src/app/staff/page.tsx`**
+**`src/lib/staff.ts` — the one place staff are listed**
 
-- `STAFF` — the full directory. Each person has a `group` (department); `GROUPS` is derived
-  automatically from those values, so adding a new `group` string creates a new section.
+Used by both the `/staff` directory and the homepage carousel, so **add a person once here and they
+appear in both.** Each person has a `group` (department); `GROUPS` is derived from those values, so
+a new `group` string creates a new directory section. Anyone without an `image` still appears in the
+directory (with the SCA crest in place of a photo) but is skipped by the carousel.
+
+To add someone, import their photo at the top of the file and add an entry:
+
+```ts
+import janeDoe from "../../public/sca-redesign/staff/jane-doe.jpg";
+// ...
+{ name: "Mrs. Jane Doe", role: "5th Grade Teacher", group: "Elementary", image: janeDoe },
+```
 
 **`src/app/calendar/page.tsx`**
 
@@ -79,10 +101,28 @@ constants rather than writing the font-family by hand.
 
 Corners are square-ish on purpose (`rounded-sm`) — it reads institutional rather than startup.
 
+## The staff carousel
+
+The homepage row of staff photos pans continuously. It pauses when you hover or tab into it, and it
+doesn't pan at all for visitors whose device asks for reduced motion — they get a normal
+side-scroller instead.
+
+To change the speed, edit one number in `src/app/globals.css`:
+
+```css
+.sca-marquee {
+  --sca-pan: 70s;   /* higher = slower */
+}
+```
+
+The roster is deliberately rendered **twice** so the loop is seamless, and each card uses `pr-4`
+rather than a flex `gap`. Don't switch it to `gap` — the animation slides the track exactly `-50%`,
+and a gap makes that land a few pixels short of a whole card, which makes the loop visibly jump.
+
 ## Images
 
-All images live in `public/sca-redesign/` and are **imported** (not referenced by string path) so
-Next.js can size and optimize them:
+All images live in `public/sca-redesign/` (staff headshots in `public/sca-redesign/staff/`) and are
+**imported** (not referenced by string path) so Next.js can size and optimize them:
 
 ```tsx
 import logo from "../../public/sca-redesign/logo.png";
@@ -99,6 +139,12 @@ up by filename, don't rename them.
 - Address: 8585 Dixie Highway, Clarkston, MI 48348
 - Phone: 248-625-9760
 - RenWeb parent portal, inquiry form, and application links (in `QUICK_LINKS`)
+
+## Analytics
+
+`src/app/layout.tsx` renders `<Analytics />` from `@vercel/analytics` — page views and visitor
+counts, no cookie banner needed. Numbers show up under **Analytics** in the Vercel project once
+Web Analytics is switched on for the project in the Vercel dashboard.
 
 ## Live chat
 
