@@ -150,6 +150,7 @@ export default function ScaRedesignPage() {
       <Hero />
       <QuickLinks />
       <Academics />
+      <PrincipalMessage />
       <Story />
       <Life />
       <Admissions />
