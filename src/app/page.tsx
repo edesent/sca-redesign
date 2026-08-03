@@ -291,6 +291,67 @@ function Academics() {
   );
 }
 
+function PrincipalMessage() {
+  return (
+    <section id="principal" className="bg-white px-4 py-24 sm:px-6 lg:px-8">
+      <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
+        <div className="relative aspect-video overflow-hidden rounded-sm border border-[#d8dde6] bg-[#27183b] shadow-[0_22px_60px_rgba(39,24,59,0.18)]">
+          <iframe
+            title={`A message from ${PRINCIPAL.name}, principal of Springfield Christian Academy`}
+            src={`https://www.youtube-nocookie.com/embed/${PRINCIPAL.videoId}?rel=0`}
+            className="absolute inset-0 h-full w-full border-0"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          />
+        </div>
+
+        <div>
+          <p className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-[0.2em] text-[#a37b02]">
+            <PlayCircle className="size-4" aria-hidden />
+            A Message from the Principal
+          </p>
+          <h2 className={`${DISPLAY} mt-4 text-balance text-4xl leading-tight text-[#27183b] sm:text-5xl`}>
+            {PRINCIPAL.title}
+          </h2>
+          <p className="mt-5 text-lg leading-8 text-[#5e5c59]">{PRINCIPAL.text}</p>
+
+          <div className="mt-8 flex items-center gap-4 border-t border-[#d8dde6] pt-6">
+            <Image
+              src={patrickWagner}
+              alt={PRINCIPAL.name}
+              className="size-16 shrink-0 rounded-sm object-cover object-top"
+            />
+            <div>
+              <div className={`${DISPLAY} text-xl text-[#27183b]`}>{PRINCIPAL.name}</div>
+              <div className="mt-1 text-xs font-black uppercase tracking-[0.14em] text-[#6b6965]">
+                {PRINCIPAL.role}
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a
+              href="#admissions"
+              className="inline-flex h-12 items-center gap-2 rounded-sm bg-[#fdc10e] px-5 text-sm font-black uppercase tracking-[0.1em] text-[#27183b] transition hover:bg-[#27183b] hover:text-[#fdc10e]"
+            >
+              Schedule a Tour
+              <ArrowRight className="size-4" aria-hidden />
+            </a>
+            <Link
+              href="/staff"
+              className="inline-flex h-12 items-center gap-2 rounded-sm border border-[#27183b]/25 px-5 text-sm font-black uppercase tracking-[0.1em] text-[#27183b] transition hover:bg-[#27183b] hover:text-[#fdc10e]"
+            >
+              Meet the Staff
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Story() {
   return (
     <section className="bg-[#27183b] px-4 py-24 text-white sm:px-6 lg:px-8">
