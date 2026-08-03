@@ -9,6 +9,7 @@ import {
   GraduationCap,
   MapPin,
   Phone,
+  PlayCircle,
   ShieldCheck,
   Sparkles,
   Trophy,
