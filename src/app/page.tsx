@@ -182,9 +182,7 @@ function Hero() {
             <Sparkles className="size-4" aria-hidden />
             Clarkston, Michigan
           </div>
-          <h1 className={`${DISPLAY} text-balance text-5xl leading-[0.95] text-white sm:text-7xl lg:text-8xl`}>
-            Offering a Life Worth Living.
-          </h1>
+          <HeroHeadline className={`${DISPLAY} text-balance leading-[0.95] text-white`} />
           <p className="mt-7 max-w-2xl text-lg leading-8 text-white/86 sm:text-xl">
             A Christ-centered academy helping students grow in wisdom, character, confidence, and academic strength from the earliest years through high school.
           </p>
