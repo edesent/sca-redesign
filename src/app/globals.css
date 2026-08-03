@@ -21,12 +21,21 @@ body {
   --sca-pan: 70s;
 }
 
+.sca-marquee {
+  scrollbar-width: none;
+}
+
+.sca-marquee::-webkit-scrollbar {
+  display: none;
+}
+
 .sca-marquee-track {
   animation: sca-pan var(--sca-pan) linear infinite;
 }
 
 .sca-marquee:hover .sca-marquee-track,
-.sca-marquee:focus-within .sca-marquee-track {
+.sca-marquee:focus-within .sca-marquee-track,
+.sca-marquee.is-paused .sca-marquee-track {
   animation-play-state: paused;
 }
 
