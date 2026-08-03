@@ -18,7 +18,7 @@ import {
 
 import SiteHeader from "../components/SiteHeader";
 import HeroHeadline from "../components/HeroHeadline";
-import StaffMarquee from "../components/StaffMarquee";
+import StaffGrid from "../components/StaffGrid";
 import logo from "../../public/sca-redesign/logo.png";
 import campus from "../../public/sca-redesign/campus-hero-enhanced.jpg";
 import lockers from "../../public/sca-redesign/excellence-bg.jpg";
