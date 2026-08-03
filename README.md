@@ -35,6 +35,7 @@ bottom of that file. Only the header and the staff carousel are shared:
 | File | What it is |
 |---|---|
 | `src/components/SiteHeader.tsx` | The header on all three pages — desktop nav **and the mobile hamburger menu**. `NAV` lives here, so changing the nav changes it everywhere. |
+| `src/components/HeroHeadline.tsx` | The hero headline. It rotates through the sayings in `HEADLINES` (each with its own type size) every `HOLD_MS`. All the sayings are stacked in one grid cell so the hero never shifts height when the text changes. |
 | `src/components/StaffMarquee.tsx` | The panning row of staff photos on the homepage. |
 | `src/lib/staff.ts` | The faculty & staff roster, shared by `/staff` and the homepage carousel. |
 
