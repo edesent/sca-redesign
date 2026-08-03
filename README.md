@@ -64,6 +64,8 @@ array, not the JSX.
 - `STATS` — the four numbers in the hero card (founded, acreage, ages served, tuition support)
 - `LIFE` — the student-life activity list
 - `EVENTS` — the few dates shown on the homepage (the full list is on `/calendar`)
+- `PRINCIPAL` — the "Message from the Principal" video section: name, role, headline, paragraph, and
+  `videoId` (the part of a YouTube link after `v=`)
 
 **`src/lib/staff.ts` — the one place staff are listed**
 
