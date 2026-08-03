@@ -485,7 +485,7 @@ function Staff() {
       </div>
 
       <div className="mx-auto mt-12 max-w-7xl">
-        <StaffMarquee />
+        <StaffGrid />
       </div>
 
       <div className="mx-auto max-w-7xl">
