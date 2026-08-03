@@ -21,7 +21,8 @@ const NAV = [
 
 type Cta = { href: string; label: string };
 
-const DEFAULT_CTA: Cta = { href: "/#admissions", label: "Visit" };
+// Short on purpose — a longer label crowds the six-item nav at the lg breakpoint.
+const DEFAULT_CTA: Cta = { href: "/#tour", label: "Visit" };
 
 export default function SiteHeader({ cta = DEFAULT_CTA }: { cta?: Cta }) {
   const pathname = usePathname();

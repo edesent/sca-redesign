@@ -19,6 +19,7 @@ import {
 import SiteHeader from "../components/SiteHeader";
 import HeroHeadline from "../components/HeroHeadline";
 import StaffGrid from "../components/StaffGrid";
+import TourForm from "../components/TourForm";
 import logo from "../../public/sca-redesign/logo.png";
 import campus from "../../public/sca-redesign/campus-hero-enhanced.jpg";
 import lockers from "../../public/sca-redesign/excellence-bg.jpg";
@@ -142,6 +143,22 @@ const PRINCIPAL = {
   text: "Before you tour the campus or fill out a single form, hear it in his own words: what a year at SCA actually looks like, what the staff is aiming for in every classroom and chapel service, and why families across Clarkston and Oakland County keep choosing this school.",
 };
 
+/** The three steps shown beside the "Request a Tour" form in `#tour`. */
+const TOUR_STEPS = [
+  {
+    title: "Tell us about your student",
+    text: "One short form — a grade, a good time of day, and anything you'd like us to know before we meet.",
+  },
+  {
+    title: "We call you back",
+    text: "The office reaches out to set a time that fits your schedule, usually within a school day.",
+  },
+  {
+    title: "Walk the campus",
+    text: "See real classrooms mid-lesson, meet the teachers your student would have, and get every tuition question answered face to face.",
+  },
+];
+
 export default function ScaRedesignPage() {
   return (
     <main
@@ -155,6 +172,7 @@ export default function ScaRedesignPage() {
       <Story />
       <Life />
       <Admissions />
+      <Tour />
       <Staff />
       <Contact />
     </main>
@@ -188,7 +206,7 @@ function Hero() {
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a
-              href="#admissions"
+              href="#tour"
               className="inline-flex h-12 items-center gap-2 rounded-sm bg-[#fdc10e] px-5 text-sm font-black uppercase tracking-[0.1em] text-[#27183b] transition hover:bg-white"
             >
               Schedule a Tour
@@ -332,7 +350,7 @@ function PrincipalMessage() {
 
           <div className="mt-8 flex flex-wrap gap-3">
             <a
-              href="#admissions"
+              href="#tour"
               className="inline-flex h-12 items-center gap-2 rounded-sm bg-[#fdc10e] px-5 text-sm font-black uppercase tracking-[0.1em] text-[#27183b] transition hover:bg-[#27183b] hover:text-[#fdc10e]"
             >
               Schedule a Tour
@@ -468,6 +486,56 @@ function Admissions() {
             </p>
           </div>
         </div>
+      </div>
+    </section>
+  );
+}
+
+function Tour() {
+  return (
+    <section id="tour" className="bg-[#27183b] px-4 py-24 text-white sm:px-6 lg:px-8">
+      <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
+        <div>
+          <p className="text-xs font-black uppercase tracking-[0.2em] text-[#fdc10e]">Plan a visit</p>
+          <h2 className={`${DISPLAY} mt-4 text-balance text-4xl leading-tight sm:text-6xl`}>
+            Come see a school day in progress.
+          </h2>
+          <p className="mt-6 text-lg leading-8 text-white/78">
+            A brochure can only say so much. Spend an hour on the 40 acres, sit in on
+            a class, and meet the people who would spend the next school year with
+            your child.
+          </p>
+
+          <ol className="mt-10 space-y-6">
+            {TOUR_STEPS.map((step, index) => (
+              <li key={step.title} className="flex gap-5">
+                <span
+                  className={`${DISPLAY} grid size-11 shrink-0 place-items-center rounded-sm border border-[#fdc10e]/45 text-lg text-[#fdc10e]`}
+                  aria-hidden
+                >
+                  {index + 1}
+                </span>
+                <div>
+                  <h3 className="text-lg font-extrabold text-white">{step.title}</h3>
+                  <p className="mt-2 text-sm leading-7 text-white/68">{step.text}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+
+          <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-white/12 pt-6 text-sm text-white/68">
+            <span className="inline-flex items-center gap-2">
+              <MapPin className="size-4 text-[#fdc10e]" aria-hidden />
+              8585 Dixie Highway, Clarkston
+            </span>
+            <a href="tel:+12486259760" className="inline-flex items-center gap-2 font-bold text-white transition hover:text-[#fdc10e]">
+              <Phone className="size-4 text-[#fdc10e]" aria-hidden />
+              248-625-9760
+            </a>
+          </div>
+        </div>
+
+        <TourForm />
       </div>
     </section>
   );
