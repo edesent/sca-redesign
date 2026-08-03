@@ -25,6 +25,7 @@ import elementary from "../../public/sca-redesign/elementary.png";
 import middleSchool from "../../public/sca-redesign/middle-school.png";
 import highSchool from "../../public/sca-redesign/high-school.png";
 import chapel from "../../public/sca-redesign/chapel.png";
+import patrickWagner from "../../public/sca-redesign/staff/patrick-wagner.jpg";
 
 const openSans = Open_Sans({
   subsets: ["latin"],
