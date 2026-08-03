@@ -131,6 +131,16 @@ const EVENTS = [
   ["Feb 14", "Valentine's Day"],
 ];
 
+/** The "Message from the Principal" video section. Swap `videoId` for the id
+ *  in a YouTube link (the part after `v=`) to change the video. */
+const PRINCIPAL = {
+  name: "Mr. Patrick Wagner",
+  role: "Principal | HS Educator",
+  videoId: "iOFASa6ipgc",
+  title: "Take a few minutes and meet our principal.",
+  text: "Before you tour the campus or fill out a single form, hear it in his own words: what a year at SCA actually looks like, what the staff is aiming for in every classroom and chapel service, and why families across Clarkston and Oakland County keep choosing this school.",
+};
+
 export default function ScaRedesignPage() {
   return (
     <main
