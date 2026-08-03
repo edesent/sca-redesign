@@ -73,7 +73,7 @@ export const STAFF: StaffMember[] = [
     image: rebeccaHarless,
   },
   { name: "Mr. Jason McClaran", role: "CAD Fusion Educator | Robotics", group: "Robotics", image: jasonMcClaran },
-  { name: "Mr. Kevin Moore", role: "JH/SH Educator", group: "Junior/Senior High", image: kevinMoore },
+  { name: "Mr. Kevin Moore", role: "JH/SH Educator | History Teacher", group: "Junior/Senior High", image: kevinMoore },
   { name: "Mrs. Laurie Moore", role: "JH/SH Science Educator", group: "Junior/Senior High", image: laurieMoore },
   {
     name: "Mrs. Dyanna Papsdorf",
