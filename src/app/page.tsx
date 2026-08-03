@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 
 import SiteHeader from "../components/SiteHeader";
+import HeroHeadline from "../components/HeroHeadline";
 import StaffMarquee from "../components/StaffMarquee";
 import logo from "../../public/sca-redesign/logo.png";
 import campus from "../../public/sca-redesign/campus-hero-enhanced.jpg";
