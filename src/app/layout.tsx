@@ -56,6 +56,8 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
         <Analytics />
+        {/* Demo tracking (CRM → Demo Tracking). Remove at go-live. */}
+        <script async src="https://www.elijahdesent.com/demo.js" />
       </body>
     </html>
   );
